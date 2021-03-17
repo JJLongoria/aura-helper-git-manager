@@ -3,7 +3,7 @@ The Git Manager Module has an util methods to handle an manage git repository an
 
 # [Usage](#usage)
 
-## Fetch(#fetch)
+## [Fetch](#fetch)
 
     const GitManager = require('@ah/git-manager');
 
@@ -15,7 +15,7 @@ The Git Manager Module has an util methods to handle an manage git repository an
 
 
 ***
-## Get Branches(#get-branches)
+## [Get Branches](#get-branches)
 
     const GitManager = require('@ah/git-manager');
 
@@ -27,7 +27,7 @@ The Git Manager Module has an util methods to handle an manage git repository an
     });
 
 ***
-## Get Commits(#get-commits)
+## [Get Commits](#get-commits)
 
     const GitManager = require('@ah/git-manager');
 
@@ -51,7 +51,7 @@ The Git Manager Module has an util methods to handle an manage git repository an
     });
 
 ***
-## Get Diffs(#get-diffs)
+## [Get Diffs](#get-diffs)
 With the Get Diffs method you can get diffs from different source and targets like two branches, commits or tags to get the differences.
 
     const GitManager = require('@ah/git-manager');
