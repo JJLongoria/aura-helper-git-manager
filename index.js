@@ -1,6 +1,6 @@
 const { ProcessHandler, ProcessFactory } = require('@ah/core').ProcessManager;
 const { Commit, CommitDate, GitDiff } = require('@ah/core').Types;
-const { StrUtils, Validator } = require('@ah/core').Utils;
+const { StrUtils, Validator } = require('@ah/core').CoreUtils;
 
 class GitManager {
 
