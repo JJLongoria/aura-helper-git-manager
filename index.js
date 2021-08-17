@@ -2,8 +2,24 @@ const { ProcessHandler, ProcessFactory } = require('@ah/core').ProcessManager;
 const { Commit, CommitDate, GitDiff } = require('@ah/core').Types;
 const { StrUtils, Validator } = require('@ah/core').CoreUtils;
 
+/**
+ * Class with util methods to handle and manage git repository and has features to use in Aura Helper Framework. Yo can fetch data, list branches, get commits or get diffs from two branches, tags, commits...
+ * 
+ * Can cobine this module with @ah/metadata-factory, @ah/package-generator and @ah/ignore to refactor code, work with git and teams or implement Continuous Integration among other development processes and tasks easy. 
+ */
 class GitManager {
 
+    /**
+     * Method to fetch repository data into your local Salesforce gitr project
+     * @param {String} projectFolder Path to the Salesforce project under git repository
+     * 
+     * @returns {Promise<any>} Return an empty promise when finish fetch process
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
     static fetch(projectFolder) {
         projectFolder = Validator.validateFolderPath(projectFolder);
         return new Promise((resolve, reject) => {
@@ -16,6 +32,17 @@ class GitManager {
         });
     }
 
+    /**
+     * Method to get branch names from the Salesforce git repository
+     * @param {String} projectFolder Path to the Salesforce project under git repository
+     *  
+     * @returns {Promise<Array<String>>} Returns a promise with list with the branch names
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
     static getBranches(projectFolder) {
         projectFolder = Validator.validateFolderPath(projectFolder);
         return new Promise((resolve, reject) => {
@@ -34,6 +61,17 @@ class GitManager {
         });
     }
 
+    /**
+     * Method to get the commits data from the Salesforce git repository 
+     * @param {String} projectFolder Path to the Salesforce project under git repository 
+     * 
+     * @returns {Promise<Array<Commit>>} Returns a promise with list of Commit objects
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
     static getCommits(projectFolder) {
         projectFolder = Validator.validateFolderPath(projectFolder);
         return new Promise((resolve, reject) => {
@@ -78,6 +116,20 @@ class GitManager {
         });
     }
 
+    /**
+     * Method to get a list of GitDiff object with the differences between two branches, commits, tags...
+     * @param {String} projectFolder Path to the Salesforce project under git repository 
+     * @param {String} source Source branch name, tag or commit for get diffs
+     * @param {String} target Target branch name, tag or commit for get diffs
+     * 
+     * @returns {Promise<Array<GitDiff>>} Returns a promise with GitDiffs objects list with the difference data
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     * @throws {DataRequiredException} If source is not provided
+     */
     static getDiffs(projectFolder, source, target) {
         projectFolder = Validator.validateFolderPath(projectFolder);
         return new Promise((resolve, reject) => {
