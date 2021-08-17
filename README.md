@@ -67,7 +67,7 @@ Method to get branch names from the Salesforce git repository
 
 ### **Return:**
 Returns a promise with list with the branch names
-- Promise<Array<String>>
+- Promise\<Array\<String\>\>
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -99,7 +99,7 @@ Method to get the commits data from the Salesforce git repository
 
 ### **Return:**
 Returns a promise with list of Commit objects
-- Promise<Array<Commit>>
+- Promise\<Array\<Commit\>\>
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -147,7 +147,7 @@ Method to get a list of GitDiff object with the differences between two branches
 
 ### **Return:**
 Returns a promise with GitDiffs objects list with the difference data
-- Promise<Array<GitDiff>>
+- Promise\<Array\<GitDiff\>\>
 
 ### **Throws:**
 This method can throw the next exceptions:
