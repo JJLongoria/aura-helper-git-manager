@@ -120,7 +120,7 @@ class GitManager {
      * Method to get a list of GitDiff object with the differences between two branches, commits, tags...
      * @param {String} projectFolder Path to the Salesforce project under git repository 
      * @param {String} source Source branch name, tag or commit for get diffs
-     * @param {String} target Target branch name, tag or commit for get diffs
+     * @param {String?} target Target branch name, tag or commit for get diffs
      * 
      * @returns {Promise<Array<GitDiff>>} Returns a promise with GitDiffs objects list with the difference data
      * 
