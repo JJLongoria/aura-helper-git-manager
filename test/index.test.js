@@ -2,6 +2,30 @@ const GitManager = require('../index');
 const { FileWriter } = require('@ah/core').FileSystem;
 
 describe('Testing index.js', () => {
+    test('Testing getUserName()', async (done) => {
+        await GitManager.getUserName('../gitTest/SFDXProject');
+        done();
+    });
+    test('Testing getUserEmail()', async (done) => {
+        await GitManager.getUserEmail('../gitTest/SFDXProject');
+        done();
+    });
+    test('Testing getAuthorName()', async (done) => {
+        await GitManager.getAuthorName('../gitTest/SFDXProject');
+        done();
+    });
+    test('Testing getAuthorEmail()', async (done) => {
+        await GitManager.getAuthorEmail('../gitTest/SFDXProject');
+        done();
+    });
+    test('Testing getCommitterName()', async (done) => {
+        await GitManager.getCommitterName('../gitTest/SFDXProject');
+        done();
+    });
+    test('Testing getCommitterEmail()', async (done) => {
+        await GitManager.getCommitterEmail('../gitTest/SFDXProject');
+        done();
+    });
     test('Testing fetch()', async (done) => {
         await GitManager.fetch('../gitTest/SFDXProject');
         done();
