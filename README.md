@@ -10,6 +10,30 @@ Can cobine this module with @ah/metadata-factory, @ah/package-generator and @ah/
 
 # [**Methods**](#gitmanager-class-methods)
 
+  - [**getUserName(projectFolder)**](#getusernameprojectfolder)
+
+    Method to get the User Name set on git config
+
+  - [**getUserEmail(projectFolder)**](#getuseremailprojectfolder)
+
+    Method to get the User Email set on git config
+
+  - [**getAuthorName(projectFolder)**](#getauthornameprojectfolder)
+
+    Method to get the Author Name set on git config
+
+  - [**getAuthorEmail(projectFolder)**](#getauthoremailprojectfolder)
+
+    Method to get the Author Email set on git config
+
+  - [**getCommitterName(projectFolder)**](#getcommitternameprojectfolder)
+
+    Method to get the Committer Name set on git config
+
+  - [**getCommitterEmail(projectFolder)**](#getcommitteremailprojectfolder)
+
+    Method to get the Committer Email set on git config
+
   - [**fetch(projectFolder)**](#fetchprojectfolder)
 
     Method to fetch repository data into your local Salesforce gitr project
@@ -27,6 +51,193 @@ Can cobine this module with @ah/metadata-factory, @ah/package-generator and @ah/
     Method to get a list of GitDiff object with the differences between two branches, commits, tags...
 
 ---
+## [**getUserName(projectFolder)**](#getusernameprojectfolder)
+Method to get the User Name set on git config
+
+### **Parameters:**
+  - **projectFolder**: Path to the Salesforce project under git repository
+    - String
+
+### **Return:**
+Return a String promise with the Git User Name
+- Promise\<String\>
+
+### **Throws:**
+This method can throw the next exceptions:
+
+- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
+- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
+- **InvalidDirectoryPathException**: If the project folder is not a directory
+- **OSNotSupportedException**: When run this processes with not supported operative system
+
+### **Examples:**
+**Get git user name**
+
+    const GitManager = require('@ah/git-manager');
+
+    GitManager.getUserName('path/to/project/root').then((username) => {
+        console.log(username);
+    }).catch((error) => {
+        // handle error
+    });
+---
+
+## [**getUserEmail(projectFolder)**](#getuseremailprojectfolder)
+Method to get the User Email set on git config
+
+### **Parameters:**
+  - **projectFolder**: Path to the Salesforce project under git repository
+    - String
+
+### **Return:**
+Return a String promise with the Git User Email
+- Promise\<String\>
+
+### **Throws:**
+This method can throw the next exceptions:
+
+- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
+- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
+- **InvalidDirectoryPathException**: If the project folder is not a directory
+- **OSNotSupportedException**: When run this processes with not supported operative system
+
+### **Examples:**
+**Get git user email**
+
+    const GitManager = require('@ah/git-manager');
+
+    GitManager.getUserEmail('path/to/project/root').then((userEmail) => {
+        console.log(userEmail);
+    }).catch((error) => {
+        // handle error
+    });
+---
+
+## [**getAuthorName(projectFolder)**](#getauthornameprojectfolder)
+Method to get the Author Name set on git config
+
+### **Parameters:**
+  - **projectFolder**: Path to the Salesforce project under git repository
+    - String
+
+### **Return:**
+Return a String promise with the Git Author Name
+- Promise\<String\>
+
+### **Throws:**
+This method can throw the next exceptions:
+
+- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
+- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
+- **InvalidDirectoryPathException**: If the project folder is not a directory
+- **OSNotSupportedException**: When run this processes with not supported operative system
+
+### **Examples:**
+**Get git author name**
+
+    const GitManager = require('@ah/git-manager');
+
+    GitManager.getAuthorName('path/to/project/root').then((authorName) => {
+        console.log(authorName);
+    }).catch((error) => {
+        // handle error
+    });
+---
+
+## [**getAuthorEmail(projectFolder)**](#getauthoremailprojectfolder)
+Method to get the Author Email set on git config
+
+### **Parameters:**
+  - **projectFolder**: Path to the Salesforce project under git repository
+    - String
+
+### **Return:**
+Return a String promise with the Git Author Email
+- Promise\<String\>
+
+### **Throws:**
+This method can throw the next exceptions:
+
+- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
+- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
+- **InvalidDirectoryPathException**: If the project folder is not a directory
+- **OSNotSupportedException**: When run this processes with not supported operative system
+
+### **Examples:**
+**Get git author email**
+
+    const GitManager = require('@ah/git-manager');
+
+    GitManager.getAuthorEmail('path/to/project/root').then((authorEmail) => {
+        console.log(authorEmail);
+    }).catch((error) => {
+        // handle error
+    });
+---
+
+## [**getCommitterName(projectFolder)**](#getcommitternameprojectfolder)
+Method to get the Committer Name set on git config
+
+### **Parameters:**
+  - **projectFolder**: Path to the Salesforce project under git repository
+    - String
+
+### **Return:**
+Return a String promise with the Git Committer Name
+- Promise\<String\>
+
+### **Throws:**
+This method can throw the next exceptions:
+
+- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
+- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
+- **InvalidDirectoryPathException**: If the project folder is not a directory
+- **OSNotSupportedException**: When run this processes with not supported operative system
+
+### **Examples:**
+**Get git committer name**
+
+    const GitManager = require('@ah/git-manager');
+
+    GitManager.getCommitterName('path/to/project/root').then((committerName) => {
+        console.log(committerName);
+    }).catch((error) => {
+        // handle error
+    });
+---
+
+## [**getCommitterEmail(projectFolder)**](#getcommitteremailprojectfolder)
+Method to get the Committer Email set on git config
+
+### **Parameters:**
+  - **projectFolder**: Path to the Salesforce project under git repository
+    - String
+
+### **Return:**
+Return a String promise with the Git Committer Email
+- Promise\<String\>
+
+### **Throws:**
+This method can throw the next exceptions:
+
+- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
+- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
+- **InvalidDirectoryPathException**: If the project folder is not a directory
+- **OSNotSupportedException**: When run this processes with not supported operative system
+
+### **Examples:**
+**Get git committer email**
+
+    const GitManager = require('@ah/git-manager');
+
+    GitManager.getCommitterEmail('path/to/project/root').then((committerEmail) => {
+        console.log(committerEmail);
+    }).catch((error) => {
+        // handle error
+    });
+---
+
+---
 ## [**fetch(projectFolder)**](#fetchprojectfolder)
 Method to fetch repository data into your local Salesforce gitr project
 
@@ -36,7 +247,7 @@ Method to fetch repository data into your local Salesforce gitr project
 
 ### **Return:**
 Return an empty promise when finish fetch process
-- Promise<any>
+- Promise\<any\>
 
 ### **Throws:**
 This method can throw the next exceptions:

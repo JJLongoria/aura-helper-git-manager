@@ -10,6 +10,144 @@ const { StrUtils, Validator } = require('@ah/core').CoreUtils;
 class GitManager {
 
     /**
+     * Method to get the User Name set on git config
+     * @param {String} projectFolder Path to the Salesforce project under git repository
+     * 
+     * @returns {Promise<String>} Return a String promise with the Git User Name
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
+    static getUserName(projectFolder) {
+        projectFolder = Validator.validateFolderPath(projectFolder);
+        return new Promise((resolve, reject) => {
+            const process = ProcessFactory.gitGetConfig(projectFolder, 'user.name');
+            ProcessHandler.runProcess(process).then((result) => {
+                resolve(result);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * Method to get the User Email set on git config
+     * @param {String} projectFolder Path to the Salesforce project under git repository
+     * 
+     * @returns {Promise<String>} Return a String promise with the Git User Email
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
+    static getUserEmail(projectFolder) {
+        projectFolder = Validator.validateFolderPath(projectFolder);
+        return new Promise((resolve, reject) => {
+            const process = ProcessFactory.gitGetConfig(projectFolder, 'user.email');
+            ProcessHandler.runProcess(process).then((result) => {
+                resolve(result);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * Method to get the Author Name set on git config
+     * @param {String} projectFolder Path to the Salesforce project under git repository
+     * 
+     * @returns {Promise<String>} Return a String promise with the Git Author Name
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
+    static getAuthorName(projectFolder) {
+        projectFolder = Validator.validateFolderPath(projectFolder);
+        return new Promise((resolve, reject) => {
+            const process = ProcessFactory.gitGetConfig(projectFolder, 'author.name');
+            ProcessHandler.runProcess(process).then((result) => {
+                resolve(result);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * Method to get the Author Email set on git config
+     * @param {String} projectFolder Path to the Salesforce project under git repository
+     * 
+     * @returns {Promise<String>} Return a String promise with the Git Author Email
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
+    static getAuthorEmail(projectFolder) {
+        projectFolder = Validator.validateFolderPath(projectFolder);
+        return new Promise((resolve, reject) => {
+            const process = ProcessFactory.gitGetConfig(projectFolder, 'author.email');
+            ProcessHandler.runProcess(process).then((result) => {
+                resolve(result);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * Method to get the Committer Name set on git config
+     * @param {String} projectFolder Path to the Salesforce project under git repository
+     * 
+     * @returns {Promise<String>} Return a String promise with the Git Committer Name
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
+    static getCommitterName(projectFolder) {
+        projectFolder = Validator.validateFolderPath(projectFolder);
+        return new Promise((resolve, reject) => {
+            const process = ProcessFactory.gitGetConfig(projectFolder, 'committer.name');
+            ProcessHandler.runProcess(process).then((result) => {
+                resolve(result);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * Method to get the Committer Email set on git config
+     * @param {String} projectFolder Path to the Salesforce project under git repository
+     * 
+     * @returns {Promise<String>} Return a String promise with the Git Committer Email
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
+    static getCommitterEmail(projectFolder) {
+        projectFolder = Validator.validateFolderPath(projectFolder);
+        return new Promise((resolve, reject) => {
+            const process = ProcessFactory.gitGetConfig(projectFolder, 'committer.email');
+            ProcessHandler.runProcess(process).then((result) => {
+                resolve(result);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
      * Method to fetch repository data into your local Salesforce gitr project
      * @param {String} projectFolder Path to the Salesforce project under git repository
      * 
@@ -23,7 +161,7 @@ class GitManager {
     static fetch(projectFolder) {
         projectFolder = Validator.validateFolderPath(projectFolder);
         return new Promise((resolve, reject) => {
-            let process = ProcessFactory.gitFetch(projectFolder);
+            const process = ProcessFactory.gitFetch(projectFolder);
             ProcessHandler.runProcess(process).then(() => {
                 resolve();
             }).catch((error) => {
@@ -36,7 +174,7 @@ class GitManager {
      * Method to get branch names from the Salesforce git repository
      * @param {String} projectFolder Path to the Salesforce project under git repository
      *  
-     * @returns {Promise<Array<String>>} Returns a promise with list with the branch names
+     * @returns {Promise<Array<Object>>} Returns a promise with an object list with branch name and active status
      * 
      * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
      * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
@@ -46,13 +184,21 @@ class GitManager {
     static getBranches(projectFolder) {
         projectFolder = Validator.validateFolderPath(projectFolder);
         return new Promise((resolve, reject) => {
-            let process = ProcessFactory.gitGetBranches(projectFolder)
+            const process = ProcessFactory.gitGetBranches(projectFolder)
             ProcessHandler.runProcess(process).then((response) => {
                 let branches = [];
                 for (const logLine of response.split('\n')) {
                     let branch = logLine.trim();
-                    if (branch.length > 0)
-                        branches.push(branch);
+                    if (branch.length > 0) {
+                        const active = branch.startsWith('*');
+                        if (active)
+                            branch = branch.substring(1).trim();
+                        branches.push({
+                            name: branch,
+                            active: active
+                        });
+                    }
+
                 }
                 resolve(branches);
             }).catch((error) => {
@@ -75,7 +221,7 @@ class GitManager {
     static getCommits(projectFolder) {
         projectFolder = Validator.validateFolderPath(projectFolder);
         return new Promise((resolve, reject) => {
-            let process = ProcessFactory.gitLog(projectFolder)
+            const process = ProcessFactory.gitLog(projectFolder)
             ProcessHandler.runProcess(process).then((response) => {
                 let commits = [];
                 let commit;
@@ -133,7 +279,7 @@ class GitManager {
     static getDiffs(projectFolder, source, target) {
         projectFolder = Validator.validateFolderPath(projectFolder);
         return new Promise((resolve, reject) => {
-            let process = ProcessFactory.gitDiff(projectFolder, source, target)
+            const process = ProcessFactory.gitDiff(projectFolder, source, target)
             ProcessHandler.runProcess(process).then((response) => {
                 resolve(processDiffOut(response));
             }).catch((error) => {
