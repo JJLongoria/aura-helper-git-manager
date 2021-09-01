@@ -8,55 +8,103 @@ Class with util methods to handle and manage git repository and has features to 
 
 Can cobine this module with @ah/metadata-factory, @ah/package-generator and @ah/ignore to refactor code, work with git and teams or implement Continuous Integration among other development processes and tasks easy.
 
+### *Class Members*
+- [**Fields**](#fields)
+
+- [**Constructors**](#constructors)
+
+- [**Methods**](#methods)
+
+</br>
+
+# [**Fields**](#fields)
+The fields that start with _ are for internal use only (Does not modify this fields to a correct GitManager work). To the rest of fields, setter methods are recommended instead modify fields.
+
+
+### [**projectFolder**](#gitmanager-fields-projectfolder)
+Path to the project under a git repository 
+- String
+
+</br>
+
+# [**Constructors**](#constructors)
+
+## [**constructor(projectFolder)**](#gitmanager-class-constructors-construct)
+Constructor to instance a new GitManager object. All parameters are optional and you can use the setters methods to set the values when you want.
+
+### **Parameters:**
+  - **projectFolder**: Path to the ignore file
+    - String
+
+</br>
+
 # [**Methods**](#gitmanager-class-methods)
 
-  - [**getUserName(projectFolder)**](#getusernameprojectfolder)
+  - [**setProjectFolder(projectFolder)**](#setprojectpfolderprojectfolder)
+
+    Method to set the git project folder path
+
+  - [**getUserName()**](#getusername)
 
     Method to get the User Name set on git config
 
-  - [**getUserEmail(projectFolder)**](#getuseremailprojectfolder)
+  - [**getUserEmail()**](#getuseremail)
 
     Method to get the User Email set on git config
 
-  - [**getAuthorName(projectFolder)**](#getauthornameprojectfolder)
+  - [**getAuthorName()**](#getauthorname)
 
     Method to get the Author Name set on git config
 
-  - [**getAuthorEmail(projectFolder)**](#getauthoremailprojectfolder)
+  - [**getAuthorEmail()**](#getauthoremail)
 
     Method to get the Author Email set on git config
 
-  - [**getCommitterName(projectFolder)**](#getcommitternameprojectfolder)
+  - [**getCommitterName()**](#getcommittername)
 
     Method to get the Committer Name set on git config
 
-  - [**getCommitterEmail(projectFolder)**](#getcommitteremailprojectfolder)
+  - [**getCommitterEmail()**](#getcommitteremail)
 
     Method to get the Committer Email set on git config
 
-  - [**fetch(projectFolder)**](#fetchprojectfolder)
+  - [**fetch()**](#fetch)
 
     Method to fetch repository data into your local Salesforce gitr project
 
-  - [**getBranches(projectFolder)**](#getbranchesprojectfolder)
+  - [**getBranches()**](#getbranches)
 
     Method to get branch names from the Salesforce git repository
 
-  - [**getCommits(projectFolder)**](#getcommitsprojectfolder)
+  - [**getCommits()**](#getcommits)
 
     Method to get the commits data from the Salesforce git repository
 
-  - [**getDiffs(projectFolder, source, target)**](#getdiffsprojectfolder-source-target)
+  - [**getDiffs(source, target)**](#getdiffssource-target)
 
     Method to get a list of GitDiff object with the differences between two branches, commits, tags...
 
 ---
-## [**getUserName(projectFolder)**](#getusernameprojectfolder)
-Method to get the User Name set on git config
 
-### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
+## [**setProjectFolder(projectFolder)**](#setprojectfolderprojectfolder)
+Method to set the git project folder path
+
+### **Return:**
+Return the GitManager instance
+- GitManager
+
+### **Examples:**
+**Set Project folder**
+
+    const GitManager = require('@ah/git-manager');
+
+    const gitManager = new GitManager();
+    gitManager.setProjectFolder('path/to/project/root');
+
+---
+
+## [**getUserName()**](#getusername)
+Method to get the User Name set on git config
 
 ### **Return:**
 Return a String promise with the Git User Name
@@ -74,20 +122,18 @@ This method can throw the next exceptions:
 **Get git user name**
 
     const GitManager = require('@ah/git-manager');
+    
+    const gitManager = new GitManager('path/to/project/root');
 
-    GitManager.getUserName('path/to/project/root').then((username) => {
+    gitManager.getUserName().then((username) => {
         console.log(username);
     }).catch((error) => {
         // handle error
     });
 ---
 
-## [**getUserEmail(projectFolder)**](#getuseremailprojectfolder)
+## [**getUserEmail()**](#getuseremail)
 Method to get the User Email set on git config
-
-### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
 
 ### **Return:**
 Return a String promise with the Git User Email
@@ -105,20 +151,18 @@ This method can throw the next exceptions:
 **Get git user email**
 
     const GitManager = require('@ah/git-manager');
+    
+    const gitManager = new GitManager('path/to/project/root');
 
-    GitManager.getUserEmail('path/to/project/root').then((userEmail) => {
+    gitManager.getUserEmail().then((userEmail) => {
         console.log(userEmail);
     }).catch((error) => {
         // handle error
     });
 ---
 
-## [**getAuthorName(projectFolder)**](#getauthornameprojectfolder)
+## [**getAuthorName()**](#getauthorname)
 Method to get the Author Name set on git config
-
-### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
 
 ### **Return:**
 Return a String promise with the Git Author Name
@@ -136,20 +180,18 @@ This method can throw the next exceptions:
 **Get git author name**
 
     const GitManager = require('@ah/git-manager');
+    
+    const gitManager = new GitManager('path/to/project/root');
 
-    GitManager.getAuthorName('path/to/project/root').then((authorName) => {
+    gitManager.getAuthorName().then((authorName) => {
         console.log(authorName);
     }).catch((error) => {
         // handle error
     });
 ---
 
-## [**getAuthorEmail(projectFolder)**](#getauthoremailprojectfolder)
+## [**getAuthorEmail()**](#getauthoremail)
 Method to get the Author Email set on git config
-
-### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
 
 ### **Return:**
 Return a String promise with the Git Author Email
@@ -168,19 +210,17 @@ This method can throw the next exceptions:
 
     const GitManager = require('@ah/git-manager');
 
-    GitManager.getAuthorEmail('path/to/project/root').then((authorEmail) => {
+    const gitManager = new GitManager('path/to/project/root');
+
+    gitManager.getAuthorEmail().then((authorEmail) => {
         console.log(authorEmail);
     }).catch((error) => {
         // handle error
     });
 ---
 
-## [**getCommitterName(projectFolder)**](#getcommitternameprojectfolder)
+## [**getCommitterName()**](#getcommittername)
 Method to get the Committer Name set on git config
-
-### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
 
 ### **Return:**
 Return a String promise with the Git Committer Name
@@ -199,19 +239,17 @@ This method can throw the next exceptions:
 
     const GitManager = require('@ah/git-manager');
 
-    GitManager.getCommitterName('path/to/project/root').then((committerName) => {
+    const gitManager = new GitManager('path/to/project/root');
+    
+    gitManager.getCommitterName().then((committerName) => {
         console.log(committerName);
     }).catch((error) => {
         // handle error
     });
 ---
 
-## [**getCommitterEmail(projectFolder)**](#getcommitteremailprojectfolder)
+## [**getCommitterEmail()**](#getcommitteremail)
 Method to get the Committer Email set on git config
-
-### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
 
 ### **Return:**
 Return a String promise with the Git Committer Email
@@ -230,7 +268,9 @@ This method can throw the next exceptions:
 
     const GitManager = require('@ah/git-manager');
 
-    GitManager.getCommitterEmail('path/to/project/root').then((committerEmail) => {
+    const gitManager = new GitManager('path/to/project/root');
+
+    gitManager.getCommitterEmail().then((committerEmail) => {
         console.log(committerEmail);
     }).catch((error) => {
         // handle error
@@ -238,12 +278,8 @@ This method can throw the next exceptions:
 ---
 
 ---
-## [**fetch(projectFolder)**](#fetchprojectfolder)
+## [**fetch()**](#fetch)
 Method to fetch repository data into your local Salesforce gitr project
-
-### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
 
 ### **Return:**
 Return an empty promise when finish fetch process
@@ -262,19 +298,17 @@ This method can throw the next exceptions:
 
     const GitManager = require('@ah/git-manager');
 
-    GitManager.fetch('path/to/project/root').then(() => {
+    const gitManager = new GitManager('path/to/project/root');
+
+    gitManager.fetch().then(() => {
         // data retrieved
     }).catch((error) => {
         // handle error
     });
 ---
 
-## [**getBranches(projectFolder)**](#getbranchesprojectfolder)
+## [**getBranches()**](#getbranches)
 Method to get branch names from the Salesforce git repository
-
-### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
 
 ### **Return:**
 Returns a promise with list with the branch names
@@ -293,7 +327,9 @@ This method can throw the next exceptions:
 
     const GitManager = require('@ah/git-manager');
 
-    GitManager.getBranches('path/to/project/root').then((branches) => {
+    const gitManager = new GitManager('path/to/project/root');
+
+    gitManager.getBranches().then((branches) => {
         console.log(branches);
         // ['master', 'branch1', '...']
     }).catch((error) => {
@@ -301,12 +337,8 @@ This method can throw the next exceptions:
     });
 ---
 
-## [**getCommits(projectFolder)**](#getcommitsprojectfolder)
+## [**getCommits()**](#getcommits)
 Method to get the commits data from the Salesforce git repository
-
-### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
 
 ### **Return:**
 Returns a promise with list of Commit objects
@@ -325,7 +357,9 @@ This method can throw the next exceptions:
 
     const GitManager = require('@ah/git-manager');
 
-    GitManager.getCommits('path/to/project/root').then((commits) => {
+    const gitManager = new GitManager('path/to/project/root');
+
+    gitManager.getCommits().then((commits) => {
         for(const commit of commits){
             console.log(commit.pointer);
             console.log(commit.author);
@@ -345,12 +379,10 @@ This method can throw the next exceptions:
     });
 ---
 
-## [**getDiffs(projectFolder, source, target)**](#getdiffsprojectfolder-source-target)
+## [**getDiffs(source, target)**](#getdiffssource-target)
 Method to get a list of GitDiff object with the differences between two branches, commits, tags...
 
 ### **Parameters:**
-  - **projectFolder**: Path to the Salesforce project under git repository
-    - String
   - **source**: Source branch name, tag or commit for get diffs
     - String
   - **target**: Target branch name, tag or commit for get diffs
@@ -374,7 +406,9 @@ This method can throw the next exceptions:
 
     const GitManager = require('@ah/git-manager');
 
-    GitManager.getDiffs('path/to/project/root', 'branch1', 'master').then((diffs) => {
+    const gitManager = new GitManager('path/to/project/root');
+
+    gitManager.getDiffs('branch1', 'master').then((diffs) => {
         for(const diff of diffs){
             console.log(diff.path);
             console.log(diff.mode);
