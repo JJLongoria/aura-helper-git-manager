@@ -10,8 +10,28 @@ const { StrUtils, Validator } = require('@ah/core').CoreUtils;
 class GitManager {
 
     /**
+     * Constructor to instance a new GitManager object
+     * 
+     * @param {String} projectFolder Path to the project under a git repository
+     */
+    constructor(projectFolder){
+        this.projectFolder = projectFolder;
+    }
+
+    /**
+     * Method to set the git project folder path
+     * @param {String} projectFolder Path to the project under a git repository 
+     * 
+     * @returns {GitManager} Return the GitManager instance
+     */
+    setProjectFolder(projectFolder){
+        this.projectFolder = projectFolder;
+        return this;
+    }
+
+
+    /**
      * Method to get the User Name set on git config
-     * @param {String} projectFolder Path to the Salesforce project under git repository
      * 
      * @returns {Promise<String>} Return a String promise with the Git User Name
      * 
@@ -20,10 +40,10 @@ class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    static getUserName(projectFolder) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    getUserName() {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitGetConfig(projectFolder, 'user.name');
+            const process = ProcessFactory.gitGetConfig(this.projectFolder, 'user.name');
             ProcessHandler.runProcess(process).then((result) => {
                 resolve(result);
             }).catch((error) => {
@@ -34,7 +54,6 @@ class GitManager {
 
     /**
      * Method to get the User Email set on git config
-     * @param {String} projectFolder Path to the Salesforce project under git repository
      * 
      * @returns {Promise<String>} Return a String promise with the Git User Email
      * 
@@ -43,10 +62,10 @@ class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    static getUserEmail(projectFolder) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    getUserEmail() {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitGetConfig(projectFolder, 'user.email');
+            const process = ProcessFactory.gitGetConfig(this.projectFolder, 'user.email');
             ProcessHandler.runProcess(process).then((result) => {
                 resolve(result);
             }).catch((error) => {
@@ -57,7 +76,6 @@ class GitManager {
 
     /**
      * Method to get the Author Name set on git config
-     * @param {String} projectFolder Path to the Salesforce project under git repository
      * 
      * @returns {Promise<String>} Return a String promise with the Git Author Name
      * 
@@ -66,10 +84,10 @@ class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    static getAuthorName(projectFolder) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    getAuthorName() {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitGetConfig(projectFolder, 'author.name');
+            const process = ProcessFactory.gitGetConfig(this.projectFolder, 'author.name');
             ProcessHandler.runProcess(process).then((result) => {
                 resolve(result);
             }).catch((error) => {
@@ -80,7 +98,6 @@ class GitManager {
 
     /**
      * Method to get the Author Email set on git config
-     * @param {String} projectFolder Path to the Salesforce project under git repository
      * 
      * @returns {Promise<String>} Return a String promise with the Git Author Email
      * 
@@ -89,10 +106,10 @@ class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    static getAuthorEmail(projectFolder) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    getAuthorEmail() {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitGetConfig(projectFolder, 'author.email');
+            const process = ProcessFactory.gitGetConfig(this.projectFolder, 'author.email');
             ProcessHandler.runProcess(process).then((result) => {
                 resolve(result);
             }).catch((error) => {
@@ -103,7 +120,6 @@ class GitManager {
 
     /**
      * Method to get the Committer Name set on git config
-     * @param {String} projectFolder Path to the Salesforce project under git repository
      * 
      * @returns {Promise<String>} Return a String promise with the Git Committer Name
      * 
@@ -112,10 +128,10 @@ class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    static getCommitterName(projectFolder) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    getCommitterName() {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitGetConfig(projectFolder, 'committer.name');
+            const process = ProcessFactory.gitGetConfig(this.projectFolder, 'committer.name');
             ProcessHandler.runProcess(process).then((result) => {
                 resolve(result);
             }).catch((error) => {
@@ -126,7 +142,6 @@ class GitManager {
 
     /**
      * Method to get the Committer Email set on git config
-     * @param {String} projectFolder Path to the Salesforce project under git repository
      * 
      * @returns {Promise<String>} Return a String promise with the Git Committer Email
      * 
@@ -135,10 +150,10 @@ class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    static getCommitterEmail(projectFolder) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    getCommitterEmail() {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitGetConfig(projectFolder, 'committer.email');
+            const process = ProcessFactory.gitGetConfig(this.projectFolder, 'committer.email');
             ProcessHandler.runProcess(process).then((result) => {
                 resolve(result);
             }).catch((error) => {
@@ -149,7 +164,6 @@ class GitManager {
 
     /**
      * Method to fetch repository data into your local Salesforce gitr project
-     * @param {String} projectFolder Path to the Salesforce project under git repository
      * 
      * @returns {Promise<any>} Return an empty promise when finish fetch process
      * 
@@ -158,10 +172,10 @@ class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    static fetch(projectFolder) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    fetch() {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitFetch(projectFolder);
+            const process = ProcessFactory.gitFetch(this.projectFolder);
             ProcessHandler.runProcess(process).then(() => {
                 resolve();
             }).catch((error) => {
@@ -172,7 +186,6 @@ class GitManager {
 
     /**
      * Method to get branch names from the Salesforce git repository
-     * @param {String} projectFolder Path to the Salesforce project under git repository
      *  
      * @returns {Promise<Array<Object>>} Returns a promise with an object list with branch name and active status
      * 
@@ -181,10 +194,10 @@ class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    static getBranches(projectFolder) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    getBranches() {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitGetBranches(projectFolder)
+            const process = ProcessFactory.gitGetBranches(this.projectFolder)
             ProcessHandler.runProcess(process).then((response) => {
                 let branches = [];
                 for (const logLine of response.split('\n')) {
@@ -208,8 +221,7 @@ class GitManager {
     }
 
     /**
-     * Method to get the commits data from the Salesforce git repository 
-     * @param {String} projectFolder Path to the Salesforce project under git repository 
+     * Method to get the commits data from the Salesforce git repository
      * 
      * @returns {Promise<Array<Commit>>} Returns a promise with list of Commit objects
      * 
@@ -218,10 +230,10 @@ class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    static getCommits(projectFolder) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    getCommits() {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitLog(projectFolder)
+            const process = ProcessFactory.gitLog(this.projectFolder)
             ProcessHandler.runProcess(process).then((response) => {
                 let commits = [];
                 let commit;
@@ -264,7 +276,6 @@ class GitManager {
 
     /**
      * Method to get a list of GitDiff object with the differences between two branches, commits, tags...
-     * @param {String} projectFolder Path to the Salesforce project under git repository 
      * @param {String} source Source branch name, tag or commit for get diffs
      * @param {String} [target] Target branch name, tag or commit for get diffs
      * 
@@ -276,10 +287,10 @@ class GitManager {
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      * @throws {DataRequiredException} If source is not provided
      */
-    static getDiffs(projectFolder, source, target) {
-        projectFolder = Validator.validateFolderPath(projectFolder);
+    getDiffs(source, target) {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
-            const process = ProcessFactory.gitDiff(projectFolder, source, target)
+            const process = ProcessFactory.gitDiff(this.projectFolder, source, target)
             ProcessHandler.runProcess(process).then((response) => {
                 resolve(processDiffOut(response));
             }).catch((error) => {
