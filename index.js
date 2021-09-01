@@ -12,7 +12,7 @@ class GitManager {
     /**
      * Constructor to instance a new GitManager object
      * 
-     * @param {String} projectFolder Path to the project under a git repository
+     * @param {String} [projectFolder] Path to the project under a git repository
      */
     constructor(projectFolder){
         this.projectFolder = projectFolder;
