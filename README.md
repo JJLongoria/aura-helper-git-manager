@@ -341,7 +341,7 @@ This method can throw the next exceptions:
     });
 ---
 
-## [**getTags(sortField)**](#getTagssortfield)
+## [**getTags(sortField)**](#gettagssortfield)
 Method to list all git tags. You can also sort by field
 
 ### **Parameters:**
