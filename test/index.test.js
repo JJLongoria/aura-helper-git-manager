@@ -35,6 +35,10 @@ describe('Testing index.js', () => {
         expect(branches.length).toEqual(3);
         done();
     });
+    test('Testing getTags()', async (done) => {
+        const tags = await new GitManager('../gitTest/SFDXProject').getTags();
+        done();
+    });
     test('Testing getCommits()', async (done) => {
         const commits = await new GitManager('../gitTest/SFDXProject').getCommits();
         expect(commits.length).toEqual(4);

@@ -76,6 +76,10 @@ Constructor to instance a new GitManager object. All parameters are optional and
 
     Method to get branch names from the Salesforce git repository
 
+  - [**getTags(sortField)**](#gettagssortfield)
+
+    Method to list all git tags. You can also sort by field
+
   - [**getCommits()**](#getcommits)
 
     Method to get the commits data from the Salesforce git repository
@@ -311,8 +315,8 @@ This method can throw the next exceptions:
 Method to get branch names from the Salesforce git repository
 
 ### **Return:**
-Returns a promise with list with the branch names
-- Promise\<Array\<String\>\>
+Returns a promise with an object list with branch name and active status
+- Promise\<Array\<Object\>\>
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -323,7 +327,7 @@ This method can throw the next exceptions:
 - **OSNotSupportedException**: When run this processes with not supported operative system
 
 ### **Examples:**
-**Get branches names from git project**
+**Get branches from git project**
 
     const GitManager = require('@ah/git-manager');
 
@@ -331,12 +335,46 @@ This method can throw the next exceptions:
 
     gitManager.getBranches().then((branches) => {
         console.log(branches);
-        // ['master', 'branch1', '...']
+        // [{ name: 'master', active: false }, { name: 'branch1', active: true }, {...}]
     }).catch((error) => {
         // handle error
     });
 ---
 
+## [**getTags(sortField)**](#getTagssortfield)
+Method to list all git tags. You can also sort by field
+
+### **Parameters:**
+  - **sortField**: Field to sort the result (Optional)
+    - String
+
+### **Return:**
+Returns a promise with a list of tags
+- Promise\<Array\<Object\>\>
+
+### **Throws:**
+This method can throw the next exceptions:
+
+- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
+- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
+- **InvalidDirectoryPathException**: If the project folder is not a directory
+- **OSNotSupportedException**: When run this processes with not supported operative system
+
+### **Examples:**
+**Get tags from git project**
+
+    const GitManager = require('@ah/git-manager');
+
+    const gitManager = new GitManager('path/to/project/root');
+
+    gitManager.getTags().then((tags) => {
+        console.log(tags);
+        // [{ name: 'v.1.0.0', description: 'tag description' }, { name: 'v.1.0.1', description: 'tag description' }, {...}]
+    }).catch((error) => {
+        // handle error
+    });
+
+---
 ## [**getCommits()**](#getcommits)
 Method to get the commits data from the Salesforce git repository
 

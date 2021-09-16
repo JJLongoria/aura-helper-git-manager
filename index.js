@@ -14,7 +14,7 @@ class GitManager {
      * 
      * @param {String} [projectFolder] Path to the project under a git repository
      */
-    constructor(projectFolder){
+    constructor(projectFolder) {
         this.projectFolder = projectFolder;
     }
 
@@ -24,7 +24,7 @@ class GitManager {
      * 
      * @returns {GitManager} Return the GitManager instance
      */
-    setProjectFolder(projectFolder){
+    setProjectFolder(projectFolder) {
         this.projectFolder = projectFolder;
         return this;
     }
@@ -214,6 +214,41 @@ class GitManager {
 
                 }
                 resolve(branches);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * Method to list all git tags. You can also sort by field
+     * @param {String} [sortField] Field to sort the result (Optional)
+     * 
+     * @returns {Promise<Array<Object>>} Returns a promise with a list of tags
+     * 
+     * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
+     * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
+     * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
+     * @throws {OSNotSupportedException} When run this processes with not supported operative system
+     */
+    getTags(sortField) {
+        this.projectFolder = Validator.validateFolderPath(this.projectFolder);
+        return new Promise((resolve, reject) => {
+            const process = ProcessFactory.gitGetTags(this.projectFolder, sortField)
+            ProcessHandler.runProcess(process).then((response) => {
+                let tags = [];
+                for (const logLine of response.split('\n')) {
+                    let tag = logLine.trim();
+                    if (tag.length > 0) {
+                        const splits = tag.split(' ');
+                        tags.push({
+                            name: splits.length[0].trim(),
+                            description: (splits.length > 0) ? splits.length[1].trim() : undefined
+                        });
+                    }
+
+                }
+                resolve(tags);
             }).catch((error) => {
                 reject(error);
             });
