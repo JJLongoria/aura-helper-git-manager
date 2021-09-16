@@ -3,7 +3,7 @@ const { FileWriter } = require('@ah/core').FileSystem;
 
 describe('Testing index.js', () => {
     test('Testing getUserName()', async (done) => {
-        await new GitManager('../gitTest/SFDXProject').getUserName();
+        await new GitManager('../gitTest/SFDXProject').setProjectFolder('../gitTest/SFDXProject').getUserName();
         done();
     });
     test('Testing getUserEmail()', async (done) => {
