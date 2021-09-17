@@ -100,7 +100,7 @@ Return the GitManager instance
 ### **Examples:**
 **Set Project folder**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager();
     gitManager.setProjectFolder('path/to/project/root');
@@ -125,7 +125,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git user name**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
     
     const gitManager = new GitManager('path/to/project/root');
 
@@ -154,7 +154,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git user email**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
     
     const gitManager = new GitManager('path/to/project/root');
 
@@ -183,7 +183,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git author name**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
     
     const gitManager = new GitManager('path/to/project/root');
 
@@ -212,7 +212,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git author email**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -241,7 +241,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git committer name**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
     
@@ -270,7 +270,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git committer email**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -300,7 +300,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Fetch data to the local project**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -329,7 +329,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get branches from git project**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -363,7 +363,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get tags from git project**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -393,7 +393,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get commits data from git project**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -442,7 +442,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get diffs from two branches**
 
-    const GitManager = require('@ah/git-manager');
+    const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
 
