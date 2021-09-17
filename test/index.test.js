@@ -1,5 +1,5 @@
 const GitManager = require('../index');
-const { FileWriter } = require('@ah/core').FileSystem;
+const { FileWriter } = require('@aurahelper/core').FileSystem;
 
 describe('Testing index.js', () => {
     test('Testing getUserName()', async (done) => {

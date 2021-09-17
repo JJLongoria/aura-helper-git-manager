@@ -1,6 +1,6 @@
-const { ProcessHandler, ProcessFactory } = require('@ah/core').ProcessManager;
-const { Commit, CommitDate, GitDiff } = require('@ah/core').Types;
-const { StrUtils, Validator } = require('@ah/core').CoreUtils;
+const { ProcessHandler, ProcessFactory } = require('@aurahelper/core').ProcessManager;
+const { Commit, CommitDate, GitDiff } = require('@aurahelper/core').Types;
+const { StrUtils, Validator } = require('@aurahelper/core').CoreUtils;
 
 /**
  * Class with util methods to handle and manage git repository and has features to use in Aura Helper Framework. Yo can fetch data, list branches, get commits or get diffs from two branches, tags, commits...
