@@ -1,6 +1,7 @@
 {
   "name": "@aurahelper/git-manager",
   "productName": "Aura Helper Git Manager",
+  "displayName": "Aura Helper Framework Git Manager",
   "version": "1.0.0",
   "description": "Aura Helper Git Manager Module its a module to handle and manage all git operations and commands.",
   "main": "index.js",
