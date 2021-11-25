@@ -32,7 +32,7 @@ The fields that start with _ are for internal use only (Does not modify this fie
 
 ### [**projectFolder**](#gitmanager-fields-projectfolder)
 Path to the project under a git repository 
-- String
+- `String`
 
 </br>
 
@@ -43,7 +43,7 @@ Constructor to instance a new GitManager object. All parameters are optional and
 
 ### **Parameters:**
   - **projectFolder**: Path to the ignore file
-    - String
+    - `String`
 
 </br>
 
@@ -104,16 +104,16 @@ Method to set the git project folder path
 
 ### **Return:**
 Return the GitManager instance
-- GitManager
+- `GitManager`
 
 ### **Examples:**
 **Set Project folder**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager();
     gitManager.setProjectFolder('path/to/project/root');
-
+```
 ---
 
 ## [**getUserName()**](#getusername)
@@ -121,19 +121,19 @@ Method to get the User Name set on git config
 
 ### **Return:**
 Return a String promise with the Git User Name
-- Promise\<String\>
+- `Promise<String>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Get git user name**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
     
     const gitManager = new GitManager('path/to/project/root');
@@ -143,6 +143,7 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
 ---
 
 ## [**getUserEmail()**](#getuseremail)
@@ -150,19 +151,19 @@ Method to get the User Email set on git config
 
 ### **Return:**
 Return a String promise with the Git User Email
-- Promise\<String\>
+- `Promise<String>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Get git user email**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
     
     const gitManager = new GitManager('path/to/project/root');
@@ -172,6 +173,7 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
 ---
 
 ## [**getAuthorName()**](#getauthorname)
@@ -179,19 +181,19 @@ Method to get the Author Name set on git config
 
 ### **Return:**
 Return a String promise with the Git Author Name
-- Promise\<String\>
+- `Promise<String>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Get git author name**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
     
     const gitManager = new GitManager('path/to/project/root');
@@ -201,6 +203,7 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
 ---
 
 ## [**getAuthorEmail()**](#getauthoremail)
@@ -208,19 +211,19 @@ Method to get the Author Email set on git config
 
 ### **Return:**
 Return a String promise with the Git Author Email
-- Promise\<String\>
+- `Promise<String>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Get git author email**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
@@ -230,6 +233,7 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
 ---
 
 ## [**getCommitterName()**](#getcommittername)
@@ -237,19 +241,19 @@ Method to get the Committer Name set on git config
 
 ### **Return:**
 Return a String promise with the Git Committer Name
-- Promise\<String\>
+- `Promise<String>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Get git committer name**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
@@ -259,6 +263,7 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
 ---
 
 ## [**getCommitterEmail()**](#getcommitteremail)
@@ -266,19 +271,19 @@ Method to get the Committer Email set on git config
 
 ### **Return:**
 Return a String promise with the Git Committer Email
-- Promise\<String\>
+- `Promise<String>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Get git committer email**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
@@ -288,6 +293,7 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
 ---
 
 ---
@@ -296,19 +302,19 @@ Method to fetch repository data into your local Salesforce gitr project
 
 ### **Return:**
 Return an empty promise when finish fetch process
-- Promise\<any\>
+- `Promise<any>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Fetch data to the local project**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
@@ -318,6 +324,7 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
 ---
 
 ## [**getBranches()**](#getbranches)
@@ -325,19 +332,19 @@ Method to get branch names from the Salesforce git repository
 
 ### **Return:**
 Returns a promise with an object list with branch name and active status
-- Promise\<Array\<Object\>\>
+- `Promise<Array<Object>>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Get branches from git project**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
@@ -348,6 +355,7 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
 ---
 
 ## [**getTags(sortField)**](#gettagssortfield)
@@ -359,19 +367,19 @@ Method to list all git tags. You can also sort by field
 
 ### **Return:**
 Returns a promise with a list of tags
-- Promise\<Array\<Object\>\>
+- `Promise<Array<Object>>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Get tags from git project**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
@@ -382,26 +390,26 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
-
+```
 ---
 ## [**getCommits()**](#getcommits)
 Method to get the commits data from the Salesforce git repository
 
 ### **Return:**
 Returns a promise with list of Commit objects
-- Promise\<Array\<Commit\>\>
+- `Promise<Array<Commit>>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
 
 ### **Examples:**
 **Get commits data from git project**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
@@ -424,6 +432,7 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
 ---
 
 ## [**getDiffs(source, target)**](#getdiffssource-target)
@@ -431,26 +440,26 @@ Method to get a list of GitDiff object with the differences between two branches
 
 ### **Parameters:**
   - **source**: Source branch name, tag or commit for get diffs
-    - String
+    - `String`
   - **target**: Target branch name, tag or commit for get diffs
-    - String
+    - `String`
 
 ### **Return:**
 Returns a promise with GitDiffs objects list with the difference data
-- Promise\<Array\<GitDiff\>\>
+- `Promise<Array<GitDiff>>`
 
 ### **Throws:**
 This method can throw the next exceptions:
 
-- **WrongDirectoryPathException**: If the project folder is not a String or can't convert to absolute path
-- **DirectoryNotFoundException**: If the project folder not exists or not have access to it
-- **InvalidDirectoryPathException**: If the project folder is not a directory
-- **OSNotSupportedException**: When run this processes with not supported operative system
-- **DataRequiredException**: If source is not provided
+- **`WrongDirectoryPathException`**: If the project folder is not a String or can't convert to absolute path
+- **`DirectoryNotFoundException`**: If the project folder not exists or not have access to it
+- **`InvalidDirectoryPathException`**: If the project folder is not a directory
+- **`OSNotSupportedException`**: When run this processes with not supported operative system
+- **`DataRequiredException`**: If source is not provided
 
 ### **Examples:**
 **Get diffs from two branches**
-
+```javascript
     const GitManager = require('@aurahelper/git-manager');
 
     const gitManager = new GitManager('path/to/project/root');
@@ -465,3 +474,4 @@ This method can throw the next exceptions:
     }).catch((error) => {
         // handle error
     });
+```
