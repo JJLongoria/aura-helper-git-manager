@@ -1,4 +1,13 @@
 # **Aura Helper Git Manager Module**
+
+[![Version](https://img.shields.io/npm/v/@aurahelper/git-manager?logo=npm)](https://www.npmjs.com/package/@aurahelper/git-manager)
+[![Total Downloads](https://img.shields.io/npm/dt/@aurahelper/git-manager?logo=npm)](https://www.npmjs.com/package/@aurahelper/git-manager)
+[![Downloads/Month](https://img.shields.io/npm/dm/@aurahelper/git-manager?logo=npm)](https://www.npmjs.com/package/@aurahelper/git-manager)
+[![Issues](https://img.shields.io/github/issues/jjlongoria/aura-helper-git-manager)](https://github.com/JJLongoria/aura-helper-git-manager/issues)
+[![Known Vulnerabilities](https://snyk.io/test/github/JJLongoria/aura-helper-git-manager/badge.svg)](https://snyk.io/test/github/JJLongoria/aura-helper-git-manager)
+[![Code Size](https://img.shields.io/github/languages/code-size/jjlongoria/aura-helper-git-manager)](https://github.com/JJLongoria/aura-helper-git-manager)
+[![License](https://img.shields.io/github/license/jjlongoria/aura-helper-git-manager?logo=github)](https://github.com/JJLongoria/aura-helper-git-manager/blob/master/LICENSE)
+
 The Git Manager Module has an util methods to handle and manage git repository and has features to use in Aura Helper Framework. Yo can fetch data, list branches, get commits or get diffs from two branches, tags, commits...
 
 You can use Aura Helper Metadata Factory Module [@ah/metadata-factory](https://github.com/JJLongoria/aura-helper-metadata-factory) to create a Metadata JSON Object from the Git diffs result, to create a package with Aura Helper Package Generator Module [@ah/package-generator](https://github.com/JJLongoria/aura-helper-package-generator) to create de package and destructive files from git changes to deploy or delete from your org. If you want, can use too the Aura Helper Ignore Module [@ah/ignore](https://github.com/JJLongoria/aura-helper-ignore) to avoid deploy or delete some metadata types. With this workflow, refactor code, work with git and teams or implement Continuous Integration among other development processes and tasks are easy.
