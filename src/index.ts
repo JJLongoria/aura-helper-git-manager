@@ -233,7 +233,7 @@ export class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    getTags(sortField): Promise<GitTag[]> {
+    getTags(sortField?: string): Promise<GitTag[]> {
         this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise((resolve, reject) => {
             const process = ProcessFactory.gitGetTags(this.projectFolder, sortField);
@@ -281,11 +281,11 @@ export class GitManager {
                             commits.push(commit);
                         }
                         commit = new Commit(words[1]);
-                    } else if (logLine.startsWith('Author:')) {
+                    } else if (logLine.startsWith('Author:') && commit) {
                         let words = logLine.split(' ');
                         commit.author = logLine.substring(logLine.indexOf(':') + 1, logLine.indexOf('<')).trim();
                         commit.authorEmail = words[words.length - 1].replace('<', '').replace('>', '');
-                    } else if (logLine.startsWith('Date:')) {
+                    } else if (logLine.startsWith('Date:') && commit) {
                         let words = logLine.split(' ');
                         const commitDate = new CommitDate(words[3], words[4], words[5], words[6], words[7], words[8], logLine.substring(logLine.indexOf(':') + 1).trim());
                         commit.date = commitDate;
@@ -304,9 +304,12 @@ export class GitManager {
                     commits.push(commit);
                 }
                 commits.sort(function (commitA, commitB) {
-                    let dateA = new Date(commitA.date.dateStr);
-                    let dateB = new Date(commitB.date.dateStr);
-                    return dateA.valueOf() - dateB.valueOf();
+                    if (commitA.date && commitA.date.dateStr && commitB.date && commitB.date.dateStr) {
+                        let dateA = new Date(commitA.date.dateStr);
+                        let dateB = new Date(commitB.date.dateStr);
+                        return dateA.valueOf() - dateB.valueOf();
+                    }
+                    return 0;
                 });
                 resolve(commits);
             }).catch((error) => {
@@ -320,7 +323,7 @@ export class GitManager {
      * @param {string} source Source branch name, tag or commit for get diffs
      * @param {string} [target] Target branch name, tag or commit for get diffs
      * 
-     * @returns {Promise<Array<GitDiff>>} Returns a promise with GitDiffs objects list with the difference data
+     * @returns {Promise<GitDiff[]>} Returns a promise with GitDiffs objects list with the difference data
      * 
      * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
      * @throws {DirectoryNotFoundException} If the project folder  not exists or not have access to it
@@ -328,9 +331,9 @@ export class GitManager {
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      * @throws {DataRequiredException} If source is not provided
      */
-    getDiffs(source, target) {
+    getDiffs(source: string, target?: string): Promise<GitDiff[]> {
         this.projectFolder = Validator.validateFolderPath(this.projectFolder);
-        return new Promise((resolve, reject) => {
+        return new Promise<GitDiff[]>((resolve, reject) => {
             const process = ProcessFactory.gitDiff(this.projectFolder, source, target);
             ProcessHandler.runProcess(process).then((response) => {
                 resolve(processDiffOut(response));
@@ -342,9 +345,9 @@ export class GitManager {
 
 }
 
-function processDiffOut(stdOut) {
+function processDiffOut(stdOut: string): GitDiff[] {
     let lines = stdOut.split('\n');
-    let diffs = [];
+    let diffs: GitDiff[] = [];
     let diff;
     let startChanges = false;
     let aPathStart = '--- a/';
@@ -384,17 +387,17 @@ function processDiffOut(stdOut) {
             diff = new GitDiff();
             changesAdded = false;
             removeChangesAdded = false;
-        } else if (tmpLine.startsWith(aPathStart)) {
+        } else if (tmpLine.startsWith(aPathStart) && diff) {
             let pathTmp = tmpLine.substring(aPathStart.length).trim();
             if (pathTmp !== '/dev/null' && pathTmp.length > 0) {
                 diff.path = StrUtils.replace(pathTmp, ',', '');
             }
-        } else if (tmpLine.startsWith(adevnull)) {
+        } else if (tmpLine.startsWith(adevnull) && diff) {
             let pathTmp = tmpLine.substring(adevnull.length).trim();
             if (pathTmp !== '/dev/null' && pathTmp.length > 0) {
                 diff.path = StrUtils.replace(pathTmp, ',', '');
             }
-        } else if (tmpLine.startsWith(bPathStart)) {
+        } else if (tmpLine.startsWith(bPathStart) && diff) {
             let pathTmp = tmpLine.substring(bPathStart.length).trim();
             startChanges = true;
             if (diff.path && diff.path !== pathTmp && pathTmp !== '/dev/null' && pathTmp.length > 0) {
@@ -404,13 +407,13 @@ function processDiffOut(stdOut) {
             } else if (pathTmp === '/dev/null' || pathTmp.length === 0) {
                 diff.mode = 'deleted file';
             }
-        } else if (tmpLine.startsWith(bdevnull)) {
+        } else if (tmpLine.startsWith(bdevnull) && diff) {
             startChanges = true;
             let pathTmp = tmpLine.substring(bdevnull.length).trim();
             if (pathTmp !== '/dev/null' && pathTmp.length > 0) {
                 diff.path = StrUtils.replace(pathTmp, ',', '');
             }
-        } else if (tmpLine.startsWith(binaryFile)) {
+        } else if (tmpLine.startsWith(binaryFile) && diff) {
             let pathTmp = tmpLine.substring(binaryFile.length).trim();
             let splits = pathTmp.split(' and ');
             if (splits.length > 1) {
@@ -423,11 +426,11 @@ function processDiffOut(stdOut) {
                     diff.path = pathTmp;
                 }
             }
-        } else if (tmpLine.startsWith('new file mode')) {
+        } else if (tmpLine.startsWith('new file mode') && diff) {
             diff.mode = 'new file';
-        } else if (tmpLine.startsWith('deleted file mode')) {
+        } else if (tmpLine.startsWith('deleted file mode') && diff) {
             diff.mode = 'deleted file';
-        } else if (startChanges) {
+        } else if (startChanges && diff) {
             if (tmpLine.startsWith('-')) {
                 diff.removeChanges.push(diffLine.substring(1));
                 if (extraDiff) {
