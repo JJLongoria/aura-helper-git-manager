@@ -2,11 +2,16 @@
   "name": "@aurahelper/git-manager",
   "productName": "Aura Helper Git Manager",
   "displayName": "Aura Helper Framework Git Manager",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Aura Helper Git Manager Module its a module to handle and manage all git operations and commands.",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "jest --coverage"
+    "compile": "tsc -p ./ ",
+    "lint": "eslint src --ext ts",
+    "lint-fix": "eslint src --ext ts --fix",
+    "watch": "tsc -watch -p ./",
+    "test": "jest --coverage --runInBand"
   },
   "keywords": [
     "aura-helper-framework",
@@ -51,6 +56,6 @@
     "jest": "^26.6.3"
   },
   "dependencies": {
-    "@aurahelper/core": "^1.0.0"
+    "@aurahelper/core": "^2.0.0"
   }
 }
