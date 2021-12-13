@@ -63,6 +63,6 @@
     "typescript": "^3.9.6"
   },
   "dependencies": {
-    "@aurahelper/core": "file:../ah-core"
+    "@aurahelper/core": "^2.0.0"
   }
 }
