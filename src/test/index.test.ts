@@ -1,53 +1,42 @@
-const GitManager = require('../index');
-const { FileWriter } = require('@aurahelper/core').FileSystem;
+import { GitManager } from '../index';
+
 
 describe('Testing index.js', () => {
-    test('Testing getUserName()', async (done) => {
+    test('Testing getUserName()', async () => {
         await new GitManager('../gitTest/SFDXProject').setProjectFolder('../gitTest/SFDXProject').getUserName();
-        done();
     });
-    test('Testing getUserEmail()', async (done) => {
+    test('Testing getUserEmail()', async () => {
         await new GitManager('../gitTest/SFDXProject').getUserEmail();
-        done();
     });
-    test('Testing getAuthorName()', async (done) => {
+    test('Testing getAuthorName()', async () => {
         await new GitManager('../gitTest/SFDXProject').getAuthorName();
-        done();
     });
-    test('Testing getAuthorEmail()', async (done) => {
+    test('Testing getAuthorEmail()', async () => {
         await new GitManager('../gitTest/SFDXProject').getAuthorEmail();
-        done();
     });
-    test('Testing getCommitterName()', async (done) => {
+    test('Testing getCommitterName()', async () => {
         await new GitManager('../gitTest/SFDXProject').getCommitterName();
-        done();
     });
-    test('Testing getCommitterEmail()', async (done) => {
+    test('Testing getCommitterEmail()', async () => {
         await new GitManager('../gitTest/SFDXProject').getCommitterEmail();
-        done();
     });
-    test('Testing fetch()', async (done) => {
+    test('Testing fetch()', async () => {
         await new GitManager('../gitTest/SFDXProject').fetch();
-        done();
     });
-    test('Testing getBranches()', async (done) => {
+    test('Testing getBranches()', async () => {
         const branches = await new GitManager('../gitTest/SFDXProject').getBranches();
         expect(branches.length).toEqual(3);
-        done();
     });
-    test('Testing getTags()', async (done) => {
+    test('Testing getTags()', async () => {
         const tags = await new GitManager('../gitTest/SFDXProject').getTags();
-        done();
     });
-    test('Testing getCommits()', async (done) => {
+    test('Testing getCommits()', async () => {
         const commits = await new GitManager('../gitTest/SFDXProject').getCommits();
         expect(commits.length).toEqual(4);
-        done();
     });
-    test('Testing getDiffs()', async (done) => {
+    test('Testing getDiffs()', async () => {
         const diffs = await new GitManager('../gitTest/SFDXProject').getDiffs('test', 'origin/master');
         //console.log(JSON.stringify(diffs, null, 2));
         //FileWriter.createFile('./test/diffOut.json', JSON.stringify(diffs, null, 2))
-        done();
     });
 });
