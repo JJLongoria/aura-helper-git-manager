@@ -32,7 +32,7 @@ The fields that start with _ are for internal use only (Does not modify this fie
 
 ### [**projectFolder**](#gitmanager-fields-projectfolder)
 Path to the project under a git repository 
-- `String`
+- `string`
 
 </br>
 
@@ -43,7 +43,7 @@ Constructor to instance a new GitManager object. All parameters are optional and
 
 ### **Parameters:**
   - **projectFolder**: Path to the ignore file
-    - `String`
+    - `string`
 
 </br>
 
@@ -109,7 +109,7 @@ Return the GitManager instance
 ### **Examples:**
 **Set Project folder**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
 
     const gitManager = new GitManager();
     gitManager.setProjectFolder('path/to/project/root');
@@ -121,7 +121,7 @@ Method to get the User Name set on git config
 
 ### **Return:**
 Return a String promise with the Git User Name
-- `Promise<String>`
+- `Promise<string>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -134,7 +134,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git user name**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
     
     const gitManager = new GitManager('path/to/project/root');
 
@@ -151,7 +151,7 @@ Method to get the User Email set on git config
 
 ### **Return:**
 Return a String promise with the Git User Email
-- `Promise<String>`
+- `Promise<string>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -164,7 +164,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git user email**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
     
     const gitManager = new GitManager('path/to/project/root');
 
@@ -181,7 +181,7 @@ Method to get the Author Name set on git config
 
 ### **Return:**
 Return a String promise with the Git Author Name
-- `Promise<String>`
+- `Promise<string>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -194,7 +194,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git author name**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
     
     const gitManager = new GitManager('path/to/project/root');
 
@@ -211,7 +211,7 @@ Method to get the Author Email set on git config
 
 ### **Return:**
 Return a String promise with the Git Author Email
-- `Promise<String>`
+- `Promise<string>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -224,7 +224,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git author email**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -241,7 +241,7 @@ Method to get the Committer Name set on git config
 
 ### **Return:**
 Return a String promise with the Git Committer Name
-- `Promise<String>`
+- `Promise<string>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -254,7 +254,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git committer name**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
 
     const gitManager = new GitManager('path/to/project/root');
     
@@ -271,7 +271,7 @@ Method to get the Committer Email set on git config
 
 ### **Return:**
 Return a String promise with the Git Committer Email
-- `Promise<String>`
+- `Promise<string>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -284,7 +284,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get git committer email**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -302,7 +302,7 @@ Method to fetch repository data into your local Salesforce gitr project
 
 ### **Return:**
 Return an empty promise when finish fetch process
-- `Promise<any>`
+- `Promise<void>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -315,7 +315,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Fetch data to the local project**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -332,7 +332,7 @@ Method to get branch names from the Salesforce git repository
 
 ### **Return:**
 Returns a promise with an object list with branch name and active status
-- `Promise<Array<Object>>`
+- `Promise<GitBranch[]>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -345,7 +345,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get branches from git project**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -367,7 +367,7 @@ Method to list all git tags. You can also sort by field
 
 ### **Return:**
 Returns a promise with a list of tags
-- `Promise<Array<Object>>`
+- `Promise<GitTag[]>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -380,7 +380,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get tags from git project**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -397,7 +397,7 @@ Method to get the commits data from the Salesforce git repository
 
 ### **Return:**
 Returns a promise with list of Commit objects
-- `Promise<Array<Commit>>`
+- `Promise<Commit[]>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -410,7 +410,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get commits data from git project**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
 
     const gitManager = new GitManager('path/to/project/root');
 
@@ -440,13 +440,13 @@ Method to get a list of GitDiff object with the differences between two branches
 
 ### **Parameters:**
   - **source**: Source branch name, tag or commit for get diffs
-    - `String`
+    - `string`
   - **target**: Target branch name, tag or commit for get diffs
-    - `String`
+    - `string`
 
 ### **Return:**
 Returns a promise with GitDiffs objects list with the difference data
-- `Promise<Array<GitDiff>>`
+- `Promise<GitDiff[]>`
 
 ### **Throws:**
 This method can throw the next exceptions:
@@ -460,7 +460,7 @@ This method can throw the next exceptions:
 ### **Examples:**
 **Get diffs from two branches**
 ```javascript
-    const GitManager = require('@aurahelper/git-manager');
+    import { GitManager } from '@aurahelper/git-manager';
 
     const gitManager = new GitManager('path/to/project/root');
 
