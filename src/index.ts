@@ -300,6 +300,9 @@ export class GitManager {
                         if (logLine.trim().length === 0 && !commit.message) {
                             continue;
                         }
+                        if(!commit.message){
+                            commit.message = '';
+                        }
                         commit.message += logLine.trim() + '\n';
                     }
                 }
