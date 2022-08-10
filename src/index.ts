@@ -260,6 +260,9 @@ export class GitManager {
     /**
      * Method to get the commits data from the Salesforce git repository
      * 
+     * @param {string} [sourceDiff] Source Commit, Branch, Tag to compare (Optional)
+     * @param {string} [targetDiff] Target Commit, Branch, Tag to compare (Optional)
+     * 
      * @returns {Promise<Commit[]>} Returns a promise with list of Commit objects
      * 
      * @throws {WrongDirectoryPathException} If the project folder is not a String or can't convert to absolute path
@@ -267,10 +270,10 @@ export class GitManager {
      * @throws {InvalidDirectoryPathException} If the project folder  is not a directory
      * @throws {OSNotSupportedException} When run this processes with not supported operative system
      */
-    getCommits(): Promise<Commit[]> {
+    getCommits(sourceDiff?: string, targetDiff?: string): Promise<Commit[]> {
         this.projectFolder = Validator.validateFolderPath(this.projectFolder);
         return new Promise<Commit[]>((resolve, reject) => {
-            const process = ProcessFactory.gitLog(this.projectFolder);
+            const process = ProcessFactory.gitLog(this.projectFolder, undefined, sourceDiff, targetDiff);
             ProcessHandler.runProcess(process).then((response) => {
                 let commits = [];
                 let commit;
