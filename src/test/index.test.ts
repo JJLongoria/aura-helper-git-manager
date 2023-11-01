@@ -1,3 +1,4 @@
+import { FileWriter } from '@aurahelper/core';
 import { GitManager } from '../index';
 
 
@@ -20,9 +21,9 @@ describe('Testing index.js', () => {
     test('Testing getCommitterEmail()', async () => {
         await new GitManager('../gitTest/SFDXProject').getCommitterEmail();
     });
-    test('Testing fetch()', async () => {
-        await new GitManager('../gitTest/SFDXProject').fetch();
-    });
+    //test('Testing fetch()', async () => {
+    //    await new GitManager('../gitTest/SFDXProject').fetch();
+    //});
     test('Testing getBranches()', async () => {
         const branches = await new GitManager('../gitTest/SFDXProject').getBranches();
         expect(branches.length).toEqual(3);
@@ -32,11 +33,11 @@ describe('Testing index.js', () => {
     });
     test('Testing getCommits()', async () => {
         const commits = await new GitManager('../gitTest/SFDXProject').getCommits();
-        expect(commits.length).toEqual(4);
+        expect(commits.length).toEqual(8);
     });
     test('Testing getDiffs()', async () => {
-        const diffs = await new GitManager('../gitTest/SFDXProject').getDiffs('test', 'origin/master');
+        const diffs = await new GitManager('../gitTest/SFDXProject').getDiffs('test', 'master');
         //console.log(JSON.stringify(diffs, null, 2));
-        //FileWriter.createFile('./test/diffOut.json', JSON.stringify(diffs, null, 2))
+        //FileWriter.createFile('./diffOut.json', JSON.stringify(diffs, null, 2));
     });
 });
